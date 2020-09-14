@@ -8,7 +8,6 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, weatherProto
     @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
-    
     var weather = WeatherManager()
     let location = CLLocationManager()
     @IBOutlet weak var textInputSearch: UITextField!
@@ -36,6 +35,10 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, weatherProto
         weather.fetchWeather(cityName: textInputSearch.text ?? "Lodon")
         textInputSearch.text = ""
     }
+    
+    @IBAction func getLocationButton(_ sender: UIButton) {
+        location.requestLocation()
+       }
     
     func shouldBeUpdateWeather(weather : WeatherModel?) -> Void {
         print(weather?.conditionName ?? "")
